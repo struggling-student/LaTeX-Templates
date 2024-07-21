@@ -1,0 +1,2 @@
+# Ignore all build directories at any level
+**/build/
