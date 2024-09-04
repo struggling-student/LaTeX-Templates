@@ -1,0 +1,87 @@
+% Basic stuff
+\documentclass[a4paper,10pt]{article}
+\usepackage[nswissgerman]{babel}
+
+% 3 column landscape layout with fewer margins
+\usepackage[landscape, left=0.75cm, top=1cm, right=0.75cm, bottom=1.5cm, footskip=15pt]{geometry}
+\usepackage{flowfram}
+\ffvadjustfalse
+\setlength{\columnsep}{1cm}
+\Ncolumn{3}
+
+% define nice looking boxes
+\usepackage[many]{tcolorbox}
+
+% a base set, that is then customised
+\tcbset {
+  base/.style={
+    boxrule=0mm,
+    leftrule=1mm,
+    left=1.75mm,
+    arc=0mm, 
+    fonttitle=\bfseries, 
+    colbacktitle=black!10!white, 
+    coltitle=black, 
+    toptitle=0.75mm, 
+    bottomtitle=0.25mm,
+    title={#1}
+  }
+}
+
+\definecolor{brandblue}{rgb}{0.34, 0.7, 1}
+\newtcolorbox{mainbox}[1]{
+  colframe=brandblue, 
+  base={#1}
+}
+
+\newtcolorbox{subbox}[1]{
+  colframe=black!20!white,
+  base={#1}
+}
+
+% Mathematical typesetting & symbols
+\usepackage{amsthm, mathtools, amssymb} 
+\usepackage{marvosym, wasysym}
+\allowdisplaybreaks
+
+% Tables
+\usepackage{tabularx, multirow}
+\usepackage{booktabs}
+\renewcommand*{\arraystretch}{2}
+
+% Make enumerations more compact
+\usepackage{enumitem}
+\setitemize{itemsep=0.5pt}
+\setenumerate{itemsep=0.75pt}
+
+% To include sketches & PDFs
+\usepackage{graphicx}
+
+% For hyperlinks
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true
+}
+
+% Metadata
+\title{Cheatsheet - Course Name}
+\author{Lucian D. Crainic - \href{https://github.com/LucianCrainic}{GitHub}}
+\date{}
+
+% Math helper stuff
+\def\limn{\lim_{n\to \infty}}
+\def\limxo{\lim_{x\to 0}}
+\def\limxi{\lim_{x\to\infty}}
+\def\limxn{\lim_{x\to-\infty}}
+\def\sumk{\sum_{k=1}^\infty}
+\def\sumn{\sum_{n=0}^\infty}
+\def\R{\mathbb{R}}
+\def\dx{\text{ d}x}
+
+\begin{document}
+
+\maketitle
+
+  \input{data/01.tex}
+
+\end{document}

@@ -1,0 +1,90 @@
+\section{Sequences}
+\subsection{Convergence}
+A sequence $(a_n)_{n\in \mathbb{N}}$ converges to \( L \) if and only if 
+\[ \lim_{n \to \infty} a_n = L \] 
+if and only if 
+\[ \forall \epsilon > 0, \ \exists N_\epsilon, \ \forall n \ge N_\epsilon : \ | a_n - L | < \epsilon \]
+
+We may assume (without loss of generality) that \( \epsilon \) is bounded by a constant \( C \in \mathbb{R} \).
+Additionally, the following holds:
+\begin{itemize}
+ \item Convergent \( \implies \) bounded, but not vice versa.
+ \item \( (a_n) \) is convergent \( \iff (a_n) \) is bounded \textbf{and} \[ \liminf a_n = \limsup a_n \]
+\end{itemize}
+
+\begin{subbox}{Limit Superior \& Inferior}
+\[
+\liminf_{n \to \infty} x_n = \lim_{n \to \infty} \left( \inf_{m \ge n} x_m \right)
+\]
+\[
+\limsup_{n \to \infty} x_n = \lim_{n \to \infty} \left( \sup_{m \ge n} x_m \right)
+\]
+\end{subbox}
+
+\begin{mainbox}{Squeeze Theorem (Sandwich Theorem)}
+If \(\lim_{n \to \infty} a_n = \alpha\), \(\lim_{n \to \infty} b_n = \alpha\), and \(a_n \leq c_n \leq b_n\) for all \(n \geq k\), then \(\lim_{n \to \infty} c_n = \alpha\).
+\end{mainbox}
+
+\begin{mainbox}{Weierstrass Theorem}
+If \(a_n\) is monotonically increasing and bounded above, then \(a_n\) converges with the limit \(\lim_{n \to \infty} a_n = \sup \{a_n : n \geq 1\}\).
+
+If \(a_n\) is monotonically decreasing and bounded below, then \(a_n\) converges with the limit \(\lim_{n \to \infty} a_n = \inf \{a_n : n \geq 1\}\).
+\end{mainbox}
+
+\begin{mainbox}{Cauchy Criterion}
+The sequence \(a_n\) is convergent if and only if \( \forall \epsilon > 0, \ \exists N \ge 1 \) such that \( | a_n - a_m | < \epsilon \quad \forall n,m \ge N \).
+\end{mainbox}
+
+\subsubsection{Subsequence}
+A subsequence of \(a_n\) is a sequence \(b_n\) where \(b_n = a_{l(n)}\) and \(l\) is a function with \(l(n) < l(n+1) \quad \forall n \ge 1\) (e.g., \(l = 2n\) for every even index).
+
+\subsubsection{Bolzano-Weierstrass Theorem}
+Every bounded sequence has a convergent subsequence.
+
+\subsection{Strategy - Convergence of Sequences}
+\begin{enumerate}
+ \item For fractions: Simplify by the highest power of \(n\). Eliminate all fractions of the form \( \frac{a}{n^a} \), as they approach 0.
+ \item For roots in the sum in the denominator: Multiply the denominator and numerator by the difference of the sum in the denominator (e.g., multiply \((a+b)\) by \((a-b)\)).
+ \item For recursive sequences: Apply the Weierstrass theorem for monotone convergence.
+ \item Apply the Squeeze Theorem (Sandwich Theorem).
+ \item Compare with a known sequence.
+ \item Determine the limit by simple transformation.
+ \item Show the limit using the definition of convergence.
+ \item Apply the Cauchy Criterion.
+ \item Find a convergent majorant.
+ \item Cry and skip the problem.
+\end{enumerate}
+
+\subsection{Strategy - Divergence of Sequences}
+\begin{enumerate}
+ \item Find a divergent comparison sequence.
+ \item For alternating sequences: Show that subsequences do not become equal, i.e., \( \lim_{n \to \infty} a_{p_1(n)} \ne \lim_{n \to \infty} a_{p_2(n)} \) (e.g., even/odd subsequences).
+\end{enumerate}
+
+\subsection{Tricks for Limits}
+\subsubsection{Binomials}
+\[
+\lim_{x \to \infty} \left(\sqrt{x + 4} - \sqrt{x - 2}\right) = \lim_{x \to \infty} \frac{(x+4)-(x-2)}{\sqrt{x+4}+\sqrt{x-2}}
+\]
+
+\subsubsection{Substitution}
+\[
+\lim_{x \to \infty} x^2 \left(1-\cos\left(\frac{1}{x}\right)\right)
+\]
+Substitute \( u = \frac{1}{x} \):
+\[
+\lim_{u \to 0} \frac{1 - \cos(u)}{u^2} = \lim_{u \to 0} \frac{\sin(u)}{2u} = \lim_{u\to 0} \frac{\cos(u)}{2} = \frac{1}{2}
+\]
+
+\subsubsection{Inductive Sequences (Induction Trick)}
+\begin{enumerate}
+  \item Show monotonicity (increasing/decreasing).
+  \item Show boundedness.
+  \item Use the Weierstrass theorem, i.e., the sequence must converge to a limit.
+  \item Use the induction trick:
+\end{enumerate}
+If the sequence converges, every subsequence has the same limit. Consider the subsequence \(l(n) = n + 1\) for \(d_{n+1} = \sqrt{3d_n - 2}\):
+\[
+d = \lim_{n \to \infty} d_n = \lim_{n \to \infty} d_{n+1} = \sqrt{\lim_{n \to \infty} 3d_n -2} = \sqrt{3d -2}
+\]
+Rearrange to \( d^2 = 3d -2 \Rightarrow d \in \{1,2\} \). Now, we can take \( d = 2 \) and show boundedness with \( d=2 \) using induction.

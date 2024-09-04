@@ -1,0 +1,1 @@
+The following folder contains image showcases.
