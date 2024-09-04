@@ -1,4 +1,4 @@
-# Lecture Notes Template
+# LaTeX Templates
 
 This repository provides a LaTeX template for creating cheatsheets and lecture notes.
 
