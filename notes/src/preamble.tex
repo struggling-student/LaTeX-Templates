@@ -1,0 +1,522 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PACKAGE IMPORTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[tmargin=2cm,rmargin=1in,lmargin=1in,margin=0.85in,bmargin=2cm,footskip=.2in]{geometry}
+\usepackage{amsmath,amsfonts,amsthm,amssymb,mathtools}
+\usepackage{bookmark}
+\usepackage{enumitem}
+\usepackage{hyperref,theoremref}
+\hypersetup{
+    pdftitle={},
+    colorlinks=true, linkcolor=doc!90,
+    bookmarksnumbered=true,
+    bookmarksopen=true
+}
+\usepackage[most,many,breakable]{tcolorbox}
+\usepackage{xcolor}
+\usepackage{graphicx}
+%\graphicspath{ {./images/} } 
+\usepackage{varwidth}
+\usepackage{authblk}
+\usepackage{nameref}
+\usepackage{multicol,array}
+\usepackage{tikz-cd}
+\usepackage{cancel}
+\usepackage{pgfplots}
+\usepackage{graphics}
+\usepackage{quotchap}
+\usepackage[compact]{titlesec}% http://ctan.org/pkg/titlesec
+\titleformat{\section}
+{\normalfont\Large\bfseries}{\thesection}{0pt}{\hfill}[{\titlerule[1.8pt]}]
+\titlespacing*{\section}
+{0em} %left
+{0em} %before
+{3em} %after/below
+
+\titleformat{\subsection}
+{\normalfont\Large\bfseries}{\thesubsection}{0pt}{\hfill}[{\titlerule[0.8pt]}]
+\titlespacing*{\subsection}
+{0em} %left
+{0em} %before
+{3em} %after/below
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SELF MADE COLORS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usetikzlibrary{ shapes.geometric }
+\usetikzlibrary{calc}
+\usepackage{anyfontsize}
+
+\definecolor{myg}{RGB}{56, 140, 70}
+\definecolor{myb}{RGB}{45, 111, 177}
+\definecolor{myr}{RGB}{199, 68, 64}
+\definecolor{mytheorembg}{HTML}{F2F2F9}
+\definecolor{mytheoremfr}{HTML}{00007B}
+\definecolor{myexamplebg}{HTML}{F2FBF8}
+\definecolor{myexamplefr}{HTML}{88D6D1}
+\definecolor{myexampleti}{HTML}{2A7F7F}
+\definecolor{mydefinitbg}{HTML}{E5E5FF}
+\definecolor{mydefinitfr}{HTML}{3F3FA3}
+\definecolor{notesgreen}{RGB}{0,162,0}
+\definecolor{myp}{RGB}{197, 92, 212}
+\definecolor{mygr}{HTML}{2C3338}
+\definecolor{myred}{RGB}{127,0,0}
+\definecolor{myyellow}{RGB}{169,121,69}
+\definecolor{OrangeRed}{HTML}{ED135A}
+\definecolor{Dandelion}{HTML}{FDBC42}
+\definecolor{light-gray}{gray}{0.95}
+\definecolor{Emerald}{HTML}{00A99D}
+\definecolor{RoyalBlue}{HTML}{0071BC}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TCOLORBOX SETUPS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Theorem
+\definecolor{theorembg}{RGB}{230, 230, 255} % Light blue background for Theorem
+\definecolor{theoremfr}{RGB}{0, 0, 139} % Dark blue border for Theorem
+
+% Corollary
+\definecolor{corollarybg}{RGB}{255, 250, 240} % Light cream background for Corollary
+\definecolor{corollaryfr}{RGB}{255, 69, 0} % Red border for Corollary
+
+% Lemma
+\definecolor{lemmabg}{RGB}{255, 255, 224} % Light yellow background for Lemma
+\definecolor{lemmafr}{RGB}{255, 215, 0} % Dark yellow border for Lemma
+
+% Claim
+\definecolor{claimbg}{RGB}{240, 255, 240} % Light mint background for Claim
+\definecolor{claimfr}{RGB}{0, 100, 0} % Dark green border for Claim
+
+% Weak Conjecture
+\definecolor{wconcernbg}{RGB}{240, 248, 255} % Light azure background for Weak Conjecture
+\definecolor{wconcernfr}{RGB}{0, 0, 139} % Dark blue border for Weak Conjecture
+
+% Example
+\definecolor{examplebg}{RGB}{255, 240, 245} % Light pink background for Example
+\definecolor{examplefr}{RGB}{255, 20, 147} % Dark pink border for Example
+
+% Definition
+\definecolor{definitionbg}{RGB}{255, 250, 240} % Light salmon background for Definition
+\definecolor{definitionfr}{RGB}{255, 69, 0} % Red-orange border for Definition
+
+% Open Problem
+\definecolor{openbg}{RGB}{240, 255, 240} % Light honeydew background for Open Problem
+\definecolor{openfr}{RGB}{0, 128, 0} % Dark green border for Open Problem
+
+% Question
+\definecolor{questionbg}{RGB}{255, 248, 220} % Light beige background for Question
+\definecolor{questionfr}{RGB}{255, 215, 0} % Gold border for Question
+
+% Note
+\definecolor{notebg}{RGB}{255, 255, 224} % Light khaki background for Note
+\definecolor{notefr}{RGB}{189, 183, 107} % Dark khaki border for Note
+
+\tcbuselibrary{theorems,skins,hooks}
+
+% Theorem Environment
+\newtcbtheorem[number within=section]{Theorem}{Theorem}
+{%
+    enhanced,
+    breakable,
+    colback = theorembg,
+    frame hidden,
+    boxrule = 0sp,
+    borderline west = {2pt}{0pt}{theoremfr},
+    sharp corners,
+    detach title,
+    before upper = \tcbtitle\par\smallskip,
+    coltitle = theoremfr,
+    fonttitle = \bfseries\sffamily,
+    description font = \mdseries,
+    separator sign none,
+    segmentation style={solid, theoremfr},
+}
+{th}
+
+% Corollary Environment
+\newtcbtheorem[number within=section]{Corollary}{Corollary}
+{%
+    enhanced,
+    breakable,
+    colback = corollarybg,
+    frame hidden,
+    boxrule = 0sp,
+    borderline west = {2pt}{0pt}{corollaryfr},
+    sharp corners,
+    detach title,
+    before upper = \tcbtitle\par\smallskip,
+    coltitle = corollaryfr,
+    fonttitle = \bfseries\sffamily,
+    description font = \mdseries,
+    separator sign none,
+    segmentation style={solid, corollaryfr},
+}
+{cor}
+
+% Lemma Environment
+\newtcbtheorem[number within=section]{Lemma}{Lemma}
+{%
+    enhanced,
+    breakable,
+    colback = lemmabg,
+    frame hidden,
+    boxrule = 0sp,
+    borderline west = {2pt}{0pt}{lemmafr},
+    sharp corners,
+    detach title,
+    before upper = \tcbtitle\par\smallskip,
+    coltitle = lemmafr,
+    fonttitle = \bfseries\sffamily,
+    description font = \mdseries,
+    separator sign none,
+    segmentation style={solid, lemmafr},
+}
+{lem}
+
+% Claim Environment
+\newtcbtheorem[number within=section]{Claim}{Claim}
+{%
+    enhanced,
+    breakable,
+    colback = claimbg,
+    frame hidden,
+    boxrule = 0sp,
+    borderline west = {2pt}{0pt}{claimfr},
+    sharp corners,
+    detach title,
+    before upper = \tcbtitle\par\smallskip,
+    coltitle = claimfr,
+    fonttitle = \bfseries\sffamily,
+    description font = \mdseries,
+    separator sign none,
+    segmentation style={solid, claimfr},
+}
+{clm}
+
+% Weak Conjecture Environment
+\newtcbtheorem[number within=section]{wconc}{Weak Conjecture}
+{%
+    enhanced,
+    breakable,
+    colback = wconcernbg,
+    frame hidden,
+    boxrule = 0sp,
+    borderline west = {2pt}{0pt}{wconcernfr},
+    sharp corners,
+    detach title,
+    before upper = \tcbtitle\par\smallskip,
+    coltitle = wconcernfr,
+    fonttitle = \bfseries\sffamily,
+    description font = \mdseries,
+    separator sign none,
+    segmentation style={solid, wconcernfr},
+}
+{wc}
+
+% Example Environment
+\newtcbtheorem[number within=section]{Example}{Example}
+{%
+    enhanced,
+    breakable,
+    colback = examplebg,
+    frame hidden,
+    boxrule = 0sp,
+    borderline west = {2pt}{0pt}{examplefr},
+    sharp corners,
+    detach title,
+    before upper = \tcbtitle\par\smallskip,
+    coltitle = examplefr,
+    fonttitle = \bfseries\sffamily,
+    description font = \mdseries,
+    separator sign none,
+    segmentation style={solid, examplefr},
+}
+{ex}
+
+% Definition Environment
+\newtcbtheorem[number within=section]{Definition}{Definition}
+{%
+    enhanced,
+    breakable,
+    colback = definitionbg,
+    frame hidden,
+    boxrule = 0sp,
+    borderline west = {2pt}{0pt}{definitionfr},
+    sharp corners,
+    detach title,
+    before upper = \tcbtitle\par\smallskip,
+    coltitle = definitionfr,
+    fonttitle = \bfseries\sffamily,
+    description font = \mdseries,
+    separator sign none,
+    segmentation style={solid, definitionfr},
+}
+{dfn}
+
+% Open Problem Environment
+\newtcbtheorem[number within=section]{open}{Open Problem}
+{%
+    enhanced,
+    breakable,
+    colback = openbg,
+    frame hidden,
+    boxrule = 0sp,
+    borderline west = {2pt}{0pt}{openfr},
+    sharp corners,
+    detach title,
+    before upper = \tcbtitle\par\smallskip,
+    coltitle = openfr,
+    fonttitle = \bfseries\sffamily,
+    description font = \mdseries,
+    separator sign none,
+    segmentation style={solid, openfr},
+}
+{opn}
+
+% Question Environment
+\newtcbtheorem[number within=section]{Question}{Question}
+{%
+    enhanced,
+    breakable,
+    colback = questionbg,
+    frame hidden,
+    boxrule = 0sp,
+    borderline west = {2pt}{0pt}{questionfr},
+    sharp corners,
+    detach title,
+    before upper = \tcbtitle\par\smallskip,
+    coltitle = questionfr,
+    fonttitle = \bfseries\sffamily,
+    description font = \mdseries,
+    separator sign none,
+    segmentation style={solid, questionfr},
+}
+{qs}
+
+% Note Environment
+
+\newtcbtheorem[number within=section]{Note}{Note}
+{%
+    enhanced,
+    breakable,
+    colback = notebg,
+    frame hidden,
+    boxrule = 0sp,
+    borderline west = {2pt}{0pt}{notefr},
+    sharp corners,
+    detach title,
+    before upper = \tcbtitle\par\smallskip,
+    coltitle = notefr,
+    fonttitle = \bfseries\sffamily,
+    description font = \mdseries,
+    separator sign none,
+    segmentation style={solid, notefr},
+}
+{nt}
+
+\newcommand{\dfn}[3][]{\begin{Definition}{#2}{#1}#3\end{Definition}}
+\newcommand{\thm}[3][]{\begin{Theorem}{#2}{#1}#3\end{Theorem}}
+\newcommand{\cor}[3][]{\begin{Corollary}{#2}{#1}#3\end{Corollary}}
+\newcommand{\lem}[3][]{\begin{Lemma}{#2}{#1}#3\end{Lemma}}
+\newcommand{\clm}[3][]{\begin{Claim}{#2}{#1}#3\end{Claim}}
+\newcommand{\ex}[3][]{\begin{Example}{#2}{#1}#3\end{Example}}
+\newcommand{\opn}[3][]{\begin{open}{#2}{#1}#3\end{open}}
+\newcommand{\qs}[3][]{\begin{Question}{#2}{#1}#3\end{Question}}
+\newcommand{\nt}[3][]{\begin{Note}{#2}{#1}#3\end{Note}}
+\newcommand{\wc}[3][]{\begin{wconc}{#2}{#1}#3\end{wconc}}
+\newcommand{\pf}[2]{\begin{myproof}[#1]#2\end{myproof}}
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+        \node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
+\newcommand\getcurrentref[1]{%
+    \ifnumequal{\value{#1}}{0}
+    {??}
+    {\the\value{#1}}%
+}
+\newcommand{\getCurrentSectionNumber}{\getcurrentref{section}}
+\newenvironment{myproof}[1][\proofname]{%
+    \proof[\bfseries #1: ]%
+}{\endproof}
+\newcounter{mylabelcounter}
+
+\makeatletter
+\newcommand{\setword}[2]{%
+    \phantomsection
+    #1\def\@currentlabel{\unexpanded{#1}}\label{#2}%
+}
+\makeatother
+
+\tikzset{
+    symbol/.style={
+            draw=none,
+            every to/.append style={
+                    edge node={node [sloped, allow upside down, auto=false]{$#1$}}}
+        }
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TABLE OF CONTENTS 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{tikz}
+\definecolor{doc}{RGB}{255,0,0}
+\usepackage{titletoc}
+
+\contentsmargin{0cm}
+
+\titlecontents{chapter}[3.7pc]
+{\addvspace{30pt}%
+    \begin{tikzpicture}[remember picture, overlay]%
+        \draw[fill=doc!90,draw=doc!90] (-7,-.1) rectangle (-0.7,.5);%
+        \pgftext[left,x=-3.6cm,y=0.2cm]{\color{white}\Large\sc\bfseries Chapter\ \thecontentslabel};%
+    \end{tikzpicture}\color{doc!90}\large\sc\bfseries}%
+{}
+{}
+{\;\titlerule\;\large\sc\bfseries Page \thecontentspage
+    \begin{tikzpicture}[remember picture, overlay]
+        \draw[fill=doc!90,draw=doc!90] (2pt,0) rectangle (4,0.1pt);
+    \end{tikzpicture}}%
+
+\titlecontents{section}[3.7pc]
+{\addvspace{2pt}}
+{\contentslabel[\thecontentslabel]{2pc}}
+{}
+{\hfill\small \thecontentspage}
+[]
+
+\titlecontents{subsection}[5.7pc]  % Adjusted indent for subsections
+{\addvspace{2pt}\small}
+{\contentslabel[\thecontentslabel]{2pc}}
+{}
+{\hfill\small \thecontentspage}
+[]
+
+\makeatletter
+\renewcommand{\tableofcontents}{%
+    \chapter*{%
+      \vspace*{-20\p@}%
+      \begin{tikzpicture}[remember picture, overlay]%
+          \pgftext[right,x=15cm,y=0.2cm]{\color{doc!90}\Huge\sc\bfseries \contentsname};%
+          \draw[fill=doc!90,draw=doc!90] (13,-.75) rectangle (20,1);%
+          \clip (13,-.75) rectangle (20,1);
+          \pgftext[right,x=15cm,y=0.2cm]{\color{white}\Huge\sc\bfseries \contentsname};%
+      \end{tikzpicture}}%
+    \@starttoc{toc}}
+\makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title Page 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{doc}{RGB}{0, 100, 0}
+\newcommand{\mytitleb}[4]{\begin{tikzpicture}[overlay,remember picture]
+
+        % Background color
+        \fill[
+            black!2]
+        (current page.south west) rectangle (current page.north east);
+
+        % Rectangles
+        \shade[
+            left color=doc,
+            right color=doc!60,
+            transform canvas ={rotate around ={45:($(current page.north west)+(0,-6)$)}}]
+        ($(current page.north west)+(0,-6)$) rectangle ++(9,1.5);
+
+        \shade[
+            left color=lightgray,
+            right color=lightgray!50,
+            rounded corners=0.75cm,
+            transform canvas ={rotate around ={45:($(current page.north west)+(.5,-10)$)}}]
+        ($(current page.north west)+(0.5,-10)$) rectangle ++(15,1.5);
+
+        \shade[
+            left color=doc,
+            right color=doc!60,
+            rounded corners=0.4cm,
+            transform canvas ={rotate around ={45:($(current page.north)+(-1.5,-3)$)}}]
+        ($(current page.north)+(-1.5,-3)$) rectangle ++(9,0.8);
+
+        \shade[
+            left color=doc,
+            right color=doc!60,
+            rounded corners=0.9cm,
+            transform canvas ={rotate around ={45:($(current page.north)+(-3,-8)$)}}] ($(current page.north)+(-3,-8)$) rectangle ++(15,1.8);
+
+        \shade[
+            left color=doc,
+            right color=doc!60,
+            rounded corners=0.9cm,
+            transform canvas ={rotate around ={45:($(current page.north west)+(4,-15.5)$)}}]
+        ($(current page.north west)+(4,-15.5)$) rectangle ++(30,1.8);
+
+        \shade[
+            left color=doc,
+            right color=doc!60,
+            rounded corners=0.75cm,
+            transform canvas ={rotate around ={45:($(current page.north west)+(13,-10)$)}}]
+        ($(current page.north west)+(13,-10)$) rectangle ++(15,1.5);
+
+        \shade[
+            left color=lightgray,
+            rounded corners=0.3cm,
+            transform canvas ={rotate around ={45:($(current page.north west)+(18,-8)$)}}]
+        ($(current page.north west)+(18,-8)$) rectangle ++(15,0.6);
+
+        \shade[
+            left color=lightgray,
+            rounded corners=0.4cm,
+            transform canvas ={rotate around ={45:($(current page.north west)+(19,-5.65)$)}}]
+        ($(current page.north west)+(19,-5.65)$) rectangle ++(15,0.8);
+
+        \shade[
+            left color=doc,
+            right color=doc!60,
+            rounded corners=0.6cm,
+            transform canvas ={rotate around ={45:($(current page.north west)+(20,-9)$)}}]
+        ($(current page.north west)+(20,-9)$) rectangle ++(14,1.2);
+
+        % Year
+        \draw[ultra thick,gray]
+        ($(current page.center)+(5,2)$) -- ++(0,-3cm)
+        node[
+            midway,
+            left=0.25cm,
+            text width=5cm,
+            align=right,
+            black!75
+        ]
+        {
+            {\fontsize{25}{30} \selectfont \bf  Lecture\\[10pt] Notes}
+        }
+        node[
+            midway,
+            right=0.25cm,
+            text width=6cm,
+            align=left,
+            doc]
+        {
+            {\fontsize{72}{86.4} \selectfont #4}
+        };
+
+        % Title
+        \node[align=center] at ($(current page.center)+(0,-5)$)
+        {
+        {\fontsize{60}{72} \selectfont {{#1}}} \\[1cm]
+        {\fontsize{16}{19.2} \selectfont \textcolor{doc}{ \bf #2}}\\[3pt]
+        #3};
+    \end{tikzpicture}
+}
+
+
+%%%%%%%%%%%%%%%%%%%
+%  Todo Commands  %
+%%%%%%%%%%%%%%%%%%%
+\usepackage{xargs}
+\usepackage[colorinlistoftodos, textwidth=0.8\marginparwidth]{todonotes}
+
+\newcommandx{\unsure}[2][1=]{\todo[size=\scriptsize, linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+\newcommandx{\fix}[2][1=]{\todo[size=\scriptsize, linecolor=orange,backgroundcolor=orange!25,bordercolor=orange,#1]{#2}}
+\newcommandx{\info}[2][1=]{\todo[size=\scriptsize, linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
