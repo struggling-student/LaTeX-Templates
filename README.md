@@ -10,7 +10,7 @@ The `cheatsheet.tex` file contains a basic structure for creating cheatsheets. I
 
 ## Lecture Notes Template
 
-The `lecture_notes.tex` file provides a template for organizing lecture notes. It includes sections for topics, subtopics, and examples. You can easily add your own content and modify the formatting to suit your needs.
+The `notes.tex` file provides a template for organizing lecture notes. It includes sections for topics, subtopics, and examples. You can easily add your own content and modify the formatting to suit your needs.
 
 <p float="left">
   <img src="./resources/notes-1.png" alt="alt-text-1" width="45%" />
